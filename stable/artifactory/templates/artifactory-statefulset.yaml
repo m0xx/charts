@@ -248,13 +248,8 @@ spec:
       selector:
         matchLabels:
           app: {{ template "artifactory.name" . }}
-    {{- else }}
       {{- if .Values.artifactory.persistence.storageClass }}
-      {{- if (eq "-" .Values.artifactory.persistence.storageClass) }}
-      storageClassName: ""
-      {{- else }}
       storageClassName: "{{ .Values.artifactory.persistence.storageClass }}"
-      {{- end }}
       {{- end }}
       accessModes: [ "{{ .Values.artifactory.persistence.accessMode }}" ]
       resources:
